@@ -1,0 +1,16 @@
+import numpy as np
+def generate(p1):
+    seq = np.empty(10000)
+    seq = np.random.choice([0,1], p=[1-p1, p1], size=10000)
+    return seq
+def count(seq):
+    target = [1, 1, 1, 1, 1]
+    count = 0
+    for i in range(len(seq) - 4):
+        if list(seq[i:i+5]) == target:
+            count += 1
+    return count
+def main(p1):
+    seq = generate(p1)
+    return count(seq)
+print(main(2/3))
